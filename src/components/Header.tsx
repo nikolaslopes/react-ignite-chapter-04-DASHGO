@@ -31,8 +31,9 @@ export function Header() {
         paddingX={'8'}
         marginLeft={'6'}
         maxWidth={'400'}
+        alignSelf={'center'}
+        position={'relative'}
         backgroundColor={'gray.800'}
-        alignItems={'center'}
         color={'gray.200'}
         borderRadius={'full'}
         cursor={'pointer'}
