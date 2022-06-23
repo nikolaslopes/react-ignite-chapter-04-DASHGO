@@ -86,7 +86,7 @@ export default function UserList() {
                   <Button
                     as={'a'}
                     size={'sm'}
-                    colorScheme={'purple'}
+                    colorScheme={'pink'}
                     leftIcon={<Icon as={RiPencilLine} fontSize={'16'} />}
                   >
                     Edit

@@ -1,21 +1,20 @@
-import { Button, HStack } from '@chakra-ui/react'
+import { Box, Button, HStack } from '@chakra-ui/react'
 
 export function Pagination() {
   return (
-    <HStack
-      spacing={'6'}
-      marginTop={'8'}
-      justifyContent={'space-between'}
-      alignItems={'center'}
-    >
+    <HStack marginTop={'8'} justifyContent={'space-between'}>
+      <Box>
+        <strong>0</strong> - <strong>10</strong> de <strong>100</strong>
+      </Box>
       <HStack>
         <Button
           size={'sm'}
           fontSize={'xs'}
           width={'4'}
-          backgroundColor={'gray.700'}
-          _hover={{
-            backgroundColor: 'gray.500',
+          colorScheme={'purple'}
+          disabled
+          _disabled={{
+            cursor: 'default',
           }}
         >
           1
