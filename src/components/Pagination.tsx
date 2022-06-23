@@ -11,7 +11,7 @@ export function Pagination() {
           size={'sm'}
           fontSize={'xs'}
           width={'4'}
-          colorScheme={'purple'}
+          colorScheme={'pink'}
           disabled
           _disabled={{
             cursor: 'default',
