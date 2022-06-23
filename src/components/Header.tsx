@@ -1,5 +1,9 @@
 import { Flex, Text, Input, Icon, HStack, Box, Avatar } from '@chakra-ui/react'
 import { RiSearchLine, RiNotificationLine, RiUserAddLine } from 'react-icons/ri'
+import { Logo } from './Header/Logo'
+import { NotificationsNav } from './Header/NotificationsNav'
+import { Profile } from './Header/Profile'
+import { SearchBox } from './Header/SearchBox'
 
 export function Header() {
   return (
@@ -12,69 +16,13 @@ export function Header() {
       paddingX={'6'}
       alignItems={'center'}
     >
-      <Text
-        fontSize={'3xl'}
-        fontWeight={'bold'}
-        letterSpacing={'tight'}
-        width={'64'}
-      >
-        DashGo
-        <Text as={'span'} color={'pink.500'} marginLeft={'1'}>
-          .
-        </Text>
-      </Text>
+      <Logo />
 
-      <Flex
-        as={'label'}
-        flex={'1'}
-        paddingY={'4'}
-        paddingX={'8'}
-        marginLeft={'6'}
-        maxWidth={'400'}
-        alignSelf={'center'}
-        position={'relative'}
-        backgroundColor={'gray.800'}
-        color={'gray.200'}
-        borderRadius={'full'}
-        cursor={'pointer'}
-      >
-        <Input
-          placeholder="Search user"
-          _placeholder={{ color: 'gray.400' }}
-          color={'gray.50'}
-          variant={'unstyled'}
-        />
-        <Icon as={RiSearchLine} fontSize={'20'} />
-      </Flex>
+      <SearchBox />
 
-      <Flex marginLeft={'auto'}>
-        <HStack
-          spacing={'8'}
-          marginX={'8'}
-          paddingRight={'8'}
-          paddingY={'1'}
-          color={'gray.300'}
-          borderRightWidth={'1px'}
-          borderColor={'gray.700'}
-        >
-          <Icon as={RiNotificationLine} fontSize={'20'} />
-          <Icon as={RiUserAddLine} fontSize={'20'} />
-        </HStack>
+      <NotificationsNav />
 
-        <Flex alignItems={'center'}>
-          <Box marginRight={'4'} textAlign={'right'}>
-            <Text>Nikolas Lopes</Text>
-            <Text color={'gray.300'} fontSize={'small'}>
-              nikolaslopes.dev@gmail.com
-            </Text>
-          </Box>
-          <Avatar
-            name={'Nikolas Lopes'}
-            size={'md'}
-            src={'https://github.com/nikolaslopes.png'}
-          />
-        </Flex>
-      </Flex>
+      <Profile />
     </Flex>
   )
 }
