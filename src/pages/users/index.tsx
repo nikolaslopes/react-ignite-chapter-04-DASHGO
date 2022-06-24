@@ -96,7 +96,7 @@ export default function UserList() {
                 <Td>
                   <Button
                     as={'a'}
-                    size={isWideVersion ? 'sm' : 'md'}
+                    size={isWideVersion ? 'sm' : 'xs'}
                     colorScheme={'purple'}
                     backgroundColor={'purple.700'}
                     leftIcon={
