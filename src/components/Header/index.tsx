@@ -22,7 +22,7 @@ export function Header() {
     >
       <Logo />
 
-      <SearchBox />
+      {isWideVersion && <SearchBox />}
 
       <Flex alignItems={'center'} marginLeft={'auto'}>
         <NotificationsNav />
