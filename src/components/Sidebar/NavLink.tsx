@@ -1,15 +1,5 @@
-import {
-  Icon,
-  Link,
-  LinkProps as ChakraLinkProps,
-  Text,
-} from '@chakra-ui/react'
-import { ElementType } from 'react'
-
-interface NavLinkProps extends ChakraLinkProps {
-  icon: ElementType
-  children: string
-}
+import { Icon, Link, Text } from '@chakra-ui/react'
+import { NavLinkProps } from './types'
 
 export function NavLink({ icon, children, ...rest }: NavLinkProps) {
   return (
