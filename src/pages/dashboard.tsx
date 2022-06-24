@@ -75,7 +75,7 @@ const Dashboard: NextPage = () => {
 
         <SimpleGrid flex={'1'} gap={'4'} minChildWidth={'320px'}>
           <Box
-            padding={'8'}
+            padding={['6', '8']}
             backgroundColor={'gray.800'}
             borderRadius={'8'}
             paddingBottom={'4'}
@@ -86,7 +86,11 @@ const Dashboard: NextPage = () => {
             <Chart type="area" height={160} options={options} series={series} />
           </Box>
 
-          <Box padding={'8'} backgroundColor={'gray.800'} borderRadius={'8'}>
+          <Box
+            padding={['6', '8']}
+            backgroundColor={'gray.800'}
+            borderRadius={'8'}
+          >
             <Text fontSize={'lg'} marginBottom={'4'}>
               Open rate
             </Text>
