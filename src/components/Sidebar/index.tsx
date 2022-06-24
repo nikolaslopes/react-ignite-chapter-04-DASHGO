@@ -11,9 +11,12 @@ import {
   useDisclosure,
 } from '@chakra-ui/react'
 import { RiMenuLine } from 'react-icons/ri'
+import { useSidebarDrawerContext } from '../../context/SidebarDrawerContext/useSidebarDrawerContext'
 import { SidebarNav } from './SidebarNav'
 
 export function Sidebar() {
+  // const  = useSidebarDrawerContext()
+
   const isDrawerSidebar = useBreakpointValue({
     base: true,
     lg: true,

@@ -1,14 +1,18 @@
 import { useDisclosure } from '@chakra-ui/react'
 import { createContext } from 'react'
-import { SidebarDrawerProviderProps } from './types'
+import { SidebarDrawerContextData, SidebarDrawerProviderProps } from './types'
 
-export const SidebarDrawerContext = createContext({})
+export const SidebarDrawerContext = createContext(
+  {} as SidebarDrawerContextData
+)
 
-const SidebarDrawerProvider = ({ children }: SidebarDrawerProviderProps) => {
-  const { isOpen, onClose } = useDisclosure()
+export const SidebarDrawerProvider = ({
+  children,
+}: SidebarDrawerProviderProps) => {
+  const disclosure = useDisclosure()
 
   return (
-    <SidebarDrawerContext.Provider value={{ isOpen, onClose }}>
+    <SidebarDrawerContext.Provider value={disclosure}>
       {children}
     </SidebarDrawerContext.Provider>
   )
