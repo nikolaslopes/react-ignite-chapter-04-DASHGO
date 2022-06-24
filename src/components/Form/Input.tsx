@@ -1,15 +1,5 @@
-import {
-  Input as ChakraInput,
-  InputProps as ChakraInputProps,
-  FormLabel,
-  FormControl,
-} from '@chakra-ui/react'
-
-interface InputProps extends ChakraInputProps {
-  name: string
-  type?: string
-  label?: string
-}
+import { Input as ChakraInput, FormLabel, FormControl } from '@chakra-ui/react'
+import { InputProps } from './types'
 
 export function Input({ name, label, ...rest }: InputProps) {
   return (
