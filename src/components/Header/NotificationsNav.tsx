@@ -11,7 +11,6 @@ export function NotificationsNav() {
       color={'gray.300'}
       borderRightWidth={'1px'}
       borderColor={'gray.700'}
-      border={'1px solid red'}
     >
       <Icon as={RiNotificationLine} fontSize={'20'} />
       <Icon as={RiUserAddLine} fontSize={'20'} />
