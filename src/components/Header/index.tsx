@@ -1,4 +1,5 @@
-import { Flex, useBreakpointValue } from '@chakra-ui/react'
+import { Flex, Icon, useBreakpointValue, useDisclosure } from '@chakra-ui/react'
+import { RiMenuLine } from 'react-icons/ri'
 import { Logo } from './Logo'
 import { NotificationsNav } from './NotificationsNav'
 import { Profile } from './Profile'
