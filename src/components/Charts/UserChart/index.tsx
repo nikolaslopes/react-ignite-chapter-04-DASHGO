@@ -1,6 +1,7 @@
 import { Box, Text, theme } from '@chakra-ui/react'
 import { ApexOptions } from 'apexcharts'
 import dynamic from 'next/dynamic'
+import { useEffect, useState } from 'react'
 import { UserChartProps } from './types'
 
 const Chart = dynamic(() => import('react-apexcharts'), {
@@ -58,12 +59,24 @@ const options: ApexOptions = {
 const series = [{ name: 'series1', data: [31, 120, 10, 28, 18, 109, 100] }]
 
 export function UserChart({ label }: UserChartProps) {
+  const [resetChart, setResetChart] = useState(false)
+
+  useEffect(() => {
+    setResetChart(true)
+
+    return () => {
+      setResetChart(false)
+    }
+  }, [resetChart])
+
   return (
     <Box padding={['6', '8']} backgroundColor={'gray.800'} borderRadius={'8'}>
       <Text fontSize={'lg'} marginBottom={'4'}>
         {label}
       </Text>
-      <Chart type="area" height={160} options={options} series={series} />
+      {resetChart && (
+        <Chart type="area" height={160} options={options} series={series} />
+      )}
     </Box>
   )
 }
