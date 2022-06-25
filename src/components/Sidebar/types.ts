@@ -4,6 +4,7 @@ import { ElementType, ReactNode } from 'react'
 export interface NavLinkProps extends ChakraLinkProps {
   icon: ElementType
   children: string
+  href: string
 }
 
 export interface NavSectionProps {
