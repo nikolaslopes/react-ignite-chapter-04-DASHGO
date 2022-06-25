@@ -1,14 +1,8 @@
 import { Box, Flex, SimpleGrid, Text, theme } from '@chakra-ui/react'
 import { NextPage } from 'next'
-import dynamic from 'next/dynamic'
 import { Sidebar } from '../components/Sidebar'
 import { Header } from '../components/Header'
-import { ApexOptions } from 'apexcharts'
 import { UserChart } from '../components/Charts/UserChart'
-
-const Chart = dynamic(() => import('react-apexcharts'), {
-  ssr: false,
-})
 
 const Dashboard: NextPage = () => {
   return (
