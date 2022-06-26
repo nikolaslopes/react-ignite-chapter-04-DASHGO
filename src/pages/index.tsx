@@ -3,15 +3,16 @@ import type { NextPage } from 'next'
 import { SubmitHandler, useForm } from 'react-hook-form'
 import { Input } from '../components/Form/Input'
 
-interface IFormInput {
+type SignInFormData = {
   email: string
   password: string
 }
 
 const Home: NextPage = () => {
-  const { register, handleSubmit } = useForm<IFormInput>()
+  const { register, handleSubmit } = useForm<SignInFormData>()
 
-  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<SignInFormData> = (data: SignInFormData) =>
+    console.log(data)
 
   return (
     <Flex
