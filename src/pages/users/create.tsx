@@ -9,11 +9,27 @@ import {
   Stack,
 } from '@chakra-ui/react'
 import Link from 'next/link'
+import { SubmitHandler, useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { Input } from '../../components/Form/Input'
 import { Header } from '../../components/Header'
 import { Sidebar } from '../../components/Sidebar'
+import { UserCreateFormData } from './types'
+import { UserCreateFormSchema } from '../../components/Form/Input/schema'
 
 export default function UserCreate() {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<UserCreateFormData>({
+    resolver: yupResolver(UserCreateFormSchema),
+  })
+
+  const onSubmit: SubmitHandler<UserCreateFormData> = async (data) => {
+    console.log(data)
+  }
+
   return (
     <Box>
       <Header />
@@ -28,10 +44,12 @@ export default function UserCreate() {
         <Sidebar />
 
         <Box
+          as={'form'}
           flex={'1'}
           borderRadius={'8'}
           backgroundColor={'gray.800'}
           padding={['6', '8']}
+          onSubmit={handleSubmit(onSubmit)}
         >
           <Heading size={'lg'} fontWeight={'normal'}>
             Create User
@@ -41,13 +59,32 @@ export default function UserCreate() {
 
           <Stack spacing={'8'}>
             <SimpleGrid minChildWidth={'240px'} spacing={['6', '8']}>
-              <Input name="name" label="Full name" />
-              <Input name="email" label="E-mail" />
+              <Input
+                idName="name"
+                label="Full name"
+                error={errors.name}
+                {...register('name')}
+              />
+              <Input
+                idName="email"
+                label="E-mail"
+                error={errors.email}
+                {...register('email')}
+              />
             </SimpleGrid>
 
             <SimpleGrid minChildWidth={'240px'} spacing={['6', '8']}>
-              <Input name="password" label="Password" />
-              <Input name="password_confirmation" label="Confirm passowrd" />
+              <Input
+                idName="password"
+                label="Password"
+                error={errors.password}
+                {...register('password')}
+              />
+              <Input
+                idName="password_confirmation"
+                label="Confirm passowrd"
+                {...register('passwordConfirmation')}
+              />
             </SimpleGrid>
           </Stack>
 
@@ -58,7 +95,7 @@ export default function UserCreate() {
                   Cancel
                 </Button>
               </Link>
-              <Button width="20" colorScheme={'pink'}>
+              <Button type="submit" width="20" colorScheme={'pink'}>
                 Confirm
               </Button>
             </HStack>
