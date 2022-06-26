@@ -17,11 +17,12 @@ const Home: NextPage = () => {
 
   const onSubmit: SubmitHandler<SignInFormData> = async (data) => {
     try {
-      await new Promise((resolse) => setTimeout(resolse, 2000))
+      await new Promise((resolse) => setTimeout(resolse, 2000)).then(() =>
+        console.log(data)
+      )
     } catch {
       alert('error')
     }
-    console.log(data)
   }
 
   return (
