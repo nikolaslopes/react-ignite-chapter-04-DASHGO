@@ -26,7 +26,7 @@ export default function UserCreate() {
     resolver: yupResolver(UserCreateFormSchema),
   })
 
-  const onSubmit: SubmitHandler<UserCreateFormData> = async (data) => {
+  const handleCreateUser: SubmitHandler<UserCreateFormData> = async (data) => {
     console.log(data)
   }
 
@@ -49,7 +49,7 @@ export default function UserCreate() {
           borderRadius={'8'}
           backgroundColor={'gray.800'}
           padding={['6', '8']}
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(handleCreateUser)}
         >
           <Heading size={'lg'} fontWeight={'normal'}>
             Create User
@@ -83,7 +83,8 @@ export default function UserCreate() {
               <Input
                 idName="password_confirmation"
                 label="Confirm passowrd"
-                {...register('passwordConfirmation')}
+                error={errors.password_confirmation}
+                {...register('password_confirmation')}
               />
             </SimpleGrid>
           </Stack>
