@@ -12,7 +12,7 @@ const Home: NextPage = () => {
   const {
     register,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting, errors },
   } = useForm<SignInFormData>()
 
   const onSubmit: SubmitHandler<SignInFormData> = async (data) => {
@@ -44,16 +44,18 @@ const Home: NextPage = () => {
       >
         <Stack spacing={'4'}>
           <Input
+            type="email"
             idName="email"
             label="E-mail"
-            type="email"
-            {...register('email')}
+            {...register('email', { required: true })}
           />
+
           <Input
+            type="password"
             idName="password"
             label="Password"
-            type="password"
-            {...register('password')}
+            error={errors.password}
+            {...register('password', { required: 'Is required' })}
           />
         </Stack>
 
