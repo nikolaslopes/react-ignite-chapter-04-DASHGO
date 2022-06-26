@@ -9,9 +9,20 @@ type SignInFormData = {
 }
 
 const Home: NextPage = () => {
-  const { register, handleSubmit } = useForm<SignInFormData>()
+  const {
+    register,
+    handleSubmit,
+    formState: { isSubmitting },
+  } = useForm<SignInFormData>()
 
-  const onSubmit: SubmitHandler<SignInFormData> = (data) => console.log(data)
+  const onSubmit: SubmitHandler<SignInFormData> = async (data) => {
+    try {
+      await new Promise((resolse) => setTimeout(resolse, 2000))
+    } catch {
+      alert('error')
+    }
+    console.log(data)
+  }
 
   return (
     <Flex
@@ -33,8 +44,8 @@ const Home: NextPage = () => {
         <Stack spacing={'4'}>
           <Input
             idName="email"
-            type="email"
             label="E-mail"
+            type="email"
             {...register('email')}
           />
           <Input
@@ -45,7 +56,13 @@ const Home: NextPage = () => {
           />
         </Stack>
 
-        <Button type="submit" marginTop={'6'} colorScheme={'pink'} size={'lg'}>
+        <Button
+          marginTop={'6'}
+          colorScheme={'pink'}
+          size={'lg'}
+          type="submit"
+          isLoading={isSubmitting}
+        >
           Sign In
         </Button>
       </Flex>
