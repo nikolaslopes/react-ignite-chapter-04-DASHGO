@@ -1,8 +1,18 @@
 import { Button, Flex, Stack } from '@chakra-ui/react'
 import type { NextPage } from 'next'
+import { SubmitHandler, useForm } from 'react-hook-form'
 import { Input } from '../components/Form/Input'
 
+interface IFormInput {
+  email: string
+  password: string
+}
+
 const Home: NextPage = () => {
+  const { register, handleSubmit } = useForm<IFormInput>()
+
+  const onSubmit: SubmitHandler<IFormInput> = (data) => console.log(data)
+
   return (
     <Flex
       width={'100vw'}
@@ -18,10 +28,21 @@ const Home: NextPage = () => {
         padding={'8'}
         borderRadius={'8px'}
         flexDirection={'column'}
+        onSubmit={handleSubmit(onSubmit)}
       >
         <Stack spacing={'4'}>
-          <Input name="email" label="E-mail" type="email" />
-          <Input name="password" label="Password" type="password" />
+          <Input
+            idName="email"
+            type="email"
+            label="E-mail"
+            {...register('email')}
+          />
+          <Input
+            idName="password"
+            label="Password"
+            type="password"
+            {...register('password')}
+          />
         </Stack>
 
         <Button type="submit" marginTop={'6'} colorScheme={'pink'} size={'lg'}>
