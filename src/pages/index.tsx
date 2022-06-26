@@ -11,8 +11,7 @@ type SignInFormData = {
 const Home: NextPage = () => {
   const { register, handleSubmit } = useForm<SignInFormData>()
 
-  const onSubmit: SubmitHandler<SignInFormData> = (data: SignInFormData) =>
-    console.log(data)
+  const onSubmit: SubmitHandler<SignInFormData> = (data) => console.log(data)
 
   return (
     <Flex
