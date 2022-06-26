@@ -9,7 +9,8 @@ export const UserCreateFormSchema = yup.object().shape({
   password: yup
     .string()
     .required('Password is required')
-    .min(6, 'At least 6 chars'),
+    .min(6, 'At least 6 chars')
+    .max(12, 'Maximum 12 characters'),
   password_confirmation: yup
     .string()
     .oneOf([null, yup.ref('password')], 'The passwords must be same'),
