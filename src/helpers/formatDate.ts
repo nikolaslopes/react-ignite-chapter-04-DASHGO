@@ -1,8 +1,8 @@
 import { format } from 'date-fns'
-import ptBR from 'date-fns/locale/pt-BR'
+import enUS from 'date-fns/locale/en-US'
 
 export function FormatDate(date: string) {
-  return format(new Date(date), 'mm/dd/yy', {
-    locale: ptBR,
+  return format(new Date(date), 'M/dd/yyyy', {
+    locale: enUS,
   })
 }

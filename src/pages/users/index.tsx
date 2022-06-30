@@ -21,12 +21,22 @@ import { useQuery } from 'react-query'
 import { Header } from '../../components/Header'
 import { Pagination } from '../../components/Pagination'
 import { Sidebar } from '../../components/Sidebar'
+import { FormatDate } from '../../helpers/formatDate'
 
 const fetchUsers = async () => {
   const request = await fetch('http://localhost:3000/api/users')
   const data = await request.json()
 
-  return data
+  const users = data.users.map((user) => {
+    return {
+      id: user.id,
+      name: user.name,
+      email: user.email,
+      createdAt: FormatDate(String(user.createdAt)),
+    }
+  })
+
+  return users
 }
 
 export default function UserList() {
@@ -102,7 +112,7 @@ export default function UserList() {
                 </Thead>
 
                 <Tbody>
-                  {data.users.map((user) => {
+                  {data.map((user) => {
                     return (
                       <Tr key={user.id}>
                         <Td width={['4', '4', '6']}>
