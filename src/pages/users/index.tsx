@@ -13,14 +13,19 @@ import {
   Thead,
   Tr,
   useBreakpointValue,
+  useQuery,
 } from '@chakra-ui/react'
 import Link from 'next/link'
-import { RiAddLine, RiEditLine, RiPencilLine } from 'react-icons/ri'
+import { RiAddLine, RiPencilLine } from 'react-icons/ri'
 import { Header } from '../../components/Header'
 import { Pagination } from '../../components/Pagination'
 import { Sidebar } from '../../components/Sidebar'
 
 export default function UserList() {
+  // const query = useQuery('users', () => {
+
+  // })
+
   const isWideVersion = useBreakpointValue({
     base: false,
     md: true,
