@@ -1,4 +1,5 @@
-import { createServer, Model } from 'miragejs'
+import { createServer, Factory, Model } from 'miragejs'
+import { faker } from '@faker-js/faker'
 
 interface IUser {
   name: string
@@ -11,6 +12,22 @@ export function makeServer() {
     models: {
       user: Model.extend<Partial<IUser>>({}),
     },
+
+    factories: {
+      user: Factory.extend({
+        name(index: number) {
+          return `Deep Fake ${index + 1}`
+        },
+        email() {
+          return faker.internet.email().toLocaleLowerCase()
+        },
+        createdAt() {
+          return faker.date.recent(10)
+        },
+      }),
+    },
+
+    seeds(server) {},
 
     routes() {
       this.namespace = 'api' // * Sets the namespace to use the routes
