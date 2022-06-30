@@ -27,7 +27,9 @@ export function makeServer() {
       }),
     },
 
-    seeds(server) {},
+    seeds(server) {
+      server.createList('user', 200)
+    },
 
     routes() {
       this.namespace = 'api' // * Sets the namespace to use the routes
