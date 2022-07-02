@@ -14,8 +14,8 @@ import { yupResolver } from '@hookform/resolvers/yup'
 import { Input } from '../../components/Form/Input'
 import { Header } from '../../components/Header'
 import { Sidebar } from '../../components/Sidebar'
-import { UserCreateFormData } from './types'
 import { UserCreateFormSchema } from '../../components/Form/Input/schema'
+import { UserCreateFormData } from '../../services/users/types'
 
 export default function UserCreate() {
   const {
