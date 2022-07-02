@@ -6,7 +6,7 @@ import { IUser, IUsers } from './types'
 export const fetchUsers = async () => {
   const { data } = await Api.get<IUsers>('users')
 
-  const users = data.users.map((user) => {
+  const users = data?.users?.map((user) => {
     return {
       id: user.id,
       name: user.name,
