@@ -21,18 +21,10 @@ import { useQuery } from 'react-query'
 import { Header } from '../../components/Header'
 import { Pagination } from '../../components/Pagination'
 import { Sidebar } from '../../components/Sidebar'
-
-import { fetchUsers } from './services'
-import { IUser } from './types'
+import { useUsers } from '../../services/users/useUsers'
 
 export default function UserList() {
-  const { data, isLoading, isFetching, error } = useQuery(
-    ['users'],
-    async () => fetchUsers(),
-    {
-      staleTime: 1000 * 5, // 5 seconds
-    }
-  )
+  const { data, isLoading, isFetching, error } = useUsers()
 
   const isWideVersion = useBreakpointValue({
     base: false,
