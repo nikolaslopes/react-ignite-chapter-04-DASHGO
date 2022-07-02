@@ -16,39 +16,18 @@ import {
   useBreakpointValue,
 } from '@chakra-ui/react'
 import Link from 'next/link'
-import { RiAddLine, RiPencilLine, RiQqFill } from 'react-icons/ri'
+import { RiAddLine, RiPencilLine } from 'react-icons/ri'
 import { useQuery } from 'react-query'
 import { Header } from '../../components/Header'
 import { Pagination } from '../../components/Pagination'
 import { Sidebar } from '../../components/Sidebar'
-import { FormatDate } from '../../helpers/formatDate'
-import { Api } from '../../services/Api'
 
-interface IUser {
-  id: number
-  name: string
-  email: string
-  createdAt: string
-}
-
-const fetchUsers = async () => {
-  const { data } = await Api.get('users')
-
-  const users = data.users.map((user: IUser) => {
-    return {
-      id: user.id,
-      name: user.name,
-      email: user.email,
-      createdAt: FormatDate(String(user.createdAt)),
-    }
-  })
-
-  return users
-}
+import { fetchUsers } from './services'
+import { IUser } from './types'
 
 export default function UserList() {
   const { data, isLoading, isFetching, error } = useQuery(
-    'users',
+    ['users'],
     async () => fetchUsers(),
     {
       staleTime: 1000 * 5, // 5 seconds
