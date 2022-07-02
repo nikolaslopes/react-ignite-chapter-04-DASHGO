@@ -32,7 +32,7 @@ interface IUser {
 }
 
 const fetchUsers = async () => {
-  const { data } = await Api.get('http://localhost:3000/api/users')
+  const { data } = await Api.get('users')
 
   const users = data.users.map((user: IUser) => {
     return {
