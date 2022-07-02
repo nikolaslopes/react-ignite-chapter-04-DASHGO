@@ -11,3 +11,7 @@ export interface IUser {
   email: string
   createdAt: string
 }
+
+export interface IUsers {
+  users: Array<IUser>
+}
