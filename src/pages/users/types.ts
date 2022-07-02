@@ -4,3 +4,10 @@ export type UserCreateFormData = {
   password: string
   password_confirmation: string
 }
+
+export interface IUser {
+  id: number
+  name: string
+  email: string
+  createdAt: string
+}
