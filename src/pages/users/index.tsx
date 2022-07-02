@@ -22,6 +22,7 @@ import { Header } from '../../components/Header'
 import { Pagination } from '../../components/Pagination'
 import { Sidebar } from '../../components/Sidebar'
 import { FormatDate } from '../../helpers/formatDate'
+import { Api } from '../../services/Api'
 
 interface IUser {
   id: number
@@ -31,8 +32,7 @@ interface IUser {
 }
 
 const fetchUsers = async () => {
-  const request = await fetch('http://localhost:3000/api/users')
-  const data = await request.json()
+  const { data } = await Api.get('http://localhost:3000/api/users')
 
   const users = data.users.map((user: IUser) => {
     return {
