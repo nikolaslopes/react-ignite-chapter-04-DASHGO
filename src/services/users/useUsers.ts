@@ -3,10 +3,10 @@ import { FormatDate } from '../../helpers/formatDate'
 import { Api } from '../../services/Api'
 import { IUser, IUsers } from './types'
 
-export const fetchUsers = async (): Promise<IUser[]> => {
-  const { data } = await Api.get<IUser[]>('users')
+export const fetchUsers = async () => {
+  const { data } = await Api.get<IUsers>('users')
 
-  const users = data.map((user) => {
+  const users = data.users.map((user) => {
     return {
       id: user.id,
       name: user.name,
