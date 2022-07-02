@@ -21,6 +21,7 @@ import { useQuery } from 'react-query'
 import { Header } from '../../components/Header'
 import { Pagination } from '../../components/Pagination'
 import { Sidebar } from '../../components/Sidebar'
+import { IUser } from '../../services/users/types'
 import { useUsers } from '../../services/users/useUsers'
 
 export default function UserList() {
