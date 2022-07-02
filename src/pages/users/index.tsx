@@ -23,11 +23,18 @@ import { Pagination } from '../../components/Pagination'
 import { Sidebar } from '../../components/Sidebar'
 import { FormatDate } from '../../helpers/formatDate'
 
+interface IUser {
+  id: number
+  name: string
+  email: string
+  createdAt: string
+}
+
 const fetchUsers = async () => {
   const request = await fetch('http://localhost:3000/api/users')
   const data = await request.json()
 
-  const users = data.users.map((user) => {
+  const users = data.users.map((user: IUser) => {
     return {
       id: user.id,
       name: user.name,
@@ -40,7 +47,13 @@ const fetchUsers = async () => {
 }
 
 export default function UserList() {
-  const { data, isLoading, error } = useQuery('users', async () => fetchUsers())
+  const { data, isLoading, isFetching, error } = useQuery(
+    'users',
+    async () => fetchUsers(),
+    {
+      staleTime: 1000 * 5, // 5 seconds
+    }
+  )
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -73,6 +86,9 @@ export default function UserList() {
           >
             <Heading size={'lg'} fontWeight={'normal'}>
               Users
+              {!isLoading && isFetching && (
+                <Spinner size={'sm'} marginLeft={'4'} color={'gray.500'} />
+              )}
             </Heading>
 
             <Link href="/users/create" passHref>
@@ -112,7 +128,7 @@ export default function UserList() {
                 </Thead>
 
                 <Tbody>
-                  {data.map((user) => {
+                  {data.map((user: IUser) => {
                     return (
                       <Tr key={user.id}>
                         <Td width={['4', '4', '6']}>
