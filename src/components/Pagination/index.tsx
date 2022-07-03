@@ -1,4 +1,4 @@
-import { Box, HStack, Stack } from '@chakra-ui/react'
+import { Box, HStack, Stack, Text } from '@chakra-ui/react'
 import { PaginationItem } from './PaginationItem'
 
 export interface PaginationProps {
@@ -42,6 +42,7 @@ export function Pagination({
           Math.min(currentPage + siblingsCount, lastPage)
         )
       : []
+
   console.log('NEXT_PAGE', nextPages)
 
   return (
@@ -52,9 +53,17 @@ export function Pagination({
       alignItems={'center'}
     >
       <Box>
-        <strong>0</strong> - <strong>10</strong> de <strong>100</strong>
+        <strong>{}</strong> - <strong>10</strong> de{' '}
+        <strong>{totalCountOfRegisters}</strong>
       </Box>
       <HStack>
+        {currentPage > 1 + siblingsCount && (
+          <>
+            <PaginationItem pageNumber={1} />
+            {currentPage > 2 + siblingsCount && <Text>...</Text>}
+          </>
+        )}
+
         {previousPages.length > 0 &&
           previousPages.map((page) => {
             return <PaginationItem key={page} pageNumber={page} />
@@ -66,7 +75,13 @@ export function Pagination({
           nextPages.map((page) => {
             return <PaginationItem key={page} pageNumber={page} />
           })}
-        <PaginationItem pageNumber={3} />
+
+        {currentPage + siblingsCount < lastPage && (
+          <>
+            {currentPage + 1 + siblingsCount < lastPage && <Text>...</Text>}
+            <PaginationItem pageNumber={lastPage} />
+          </>
+        )}
       </HStack>
     </Stack>
   )
