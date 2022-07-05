@@ -6,7 +6,6 @@ import {
   ActiveModelSerializer,
 } from 'miragejs'
 import { faker } from '@faker-js/faker'
-import { IUser } from '../../interfaces/IUsers'
 
 type User = {
   name: string
@@ -16,9 +15,9 @@ type User = {
 
 export function makeServer() {
   const server = createServer({
-    // serializers: {
-    //   application: ActiveModelSerializer,
-    // },
+    serializers: {
+      application: ActiveModelSerializer,
+    },
 
     models: {
       user: Model.extend<Partial<User>>({}),

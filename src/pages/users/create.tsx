@@ -21,7 +21,7 @@ import { Api } from '../../services/Api'
 
 export default function UserCreate() {
   const queryCreateUser = useMutation(async (user: UserCreateFormData) => {
-    const response = await Api.post('users', {
+    const response = await Api.post('/users', {
       user: {
         ...user,
         created_at: new Date(),

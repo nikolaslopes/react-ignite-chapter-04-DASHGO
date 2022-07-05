@@ -21,6 +21,7 @@ import { RiAddLine, RiPencilLine } from 'react-icons/ri'
 import { Header } from '../../components/Header'
 import { Pagination } from '../../components/Pagination'
 import { Sidebar } from '../../components/Sidebar'
+import { IUser } from '../../interfaces/IUsers'
 import { useUsers } from '../../services/users/useUsers'
 
 export default function UserList() {
@@ -100,7 +101,7 @@ export default function UserList() {
                 </Thead>
 
                 <Tbody>
-                  {data?.users?.map((user) => {
+                  {data?.users.map((user) => {
                     return (
                       <Tr key={user.id}>
                         <Td width={['4', '4', '6']}>
@@ -114,7 +115,7 @@ export default function UserList() {
                             </Text>
                           </Box>
                         </Td>
-                        {isWideVersion && <Td>{user.createdAt}</Td>}
+                        {isWideVersion && <Td>{user.created_at}</Td>}
                         <Td>
                           <Button
                             as={'a'}

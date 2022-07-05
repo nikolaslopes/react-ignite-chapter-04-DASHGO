@@ -9,7 +9,7 @@ export interface IUser {
   id: number
   name: string
   email: string
-  createdAt: string
+  created_at: string
 }
 
 export interface IUsers {
