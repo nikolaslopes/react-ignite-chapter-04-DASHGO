@@ -1,6 +1,6 @@
 import { createServer, Factory, Model, Response } from 'miragejs'
 import { faker } from '@faker-js/faker'
-import { IUser } from './types'
+import { IUser } from '../../interfaces/IUsers'
 
 export function makeServer() {
   const server = createServer({

@@ -1,7 +1,7 @@
 import { useQuery } from 'react-query'
 import { FormatDate } from '../../helpers/formatDate'
+import { IUsers } from '../../interfaces/IUsers'
 import { Api } from '../../services/Api'
-import { IUsers } from './types'
 
 export const fetchUsers = async (page: number) => {
   const { data, headers } = await Api.get<IUsers>('users', {
