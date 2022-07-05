@@ -18,22 +18,36 @@ import { UserCreateFormSchema } from '../../components/Form/Input/schema'
 import { UserCreateFormData } from '../../interfaces/IUsers'
 import { useMutation } from 'react-query'
 import { Api } from '../../services/Api'
+import { queryClient } from '../../services/queryClient'
+import { useRouter } from 'next/router'
 
 export default function UserCreate() {
-  const queryCreateUser = useMutation(async (user: UserCreateFormData) => {
-    const response = await Api.post('/users', {
-      user: {
-        ...user,
-        created_at: new Date(),
-      },
-    })
+  const router = useRouter()
 
-    return response.data.user
-  })
+  const queryCreateUser = useMutation(
+    async (user: UserCreateFormData) => {
+      const response = await Api.post('/users', {
+        user: {
+          ...user,
+          created_at: new Date(),
+        },
+      })
+
+      return response.data.user
+    },
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries('users')
+        reset()
+        router.push('/users')
+      },
+    }
+  )
 
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<UserCreateFormData>({
     resolver: yupResolver(UserCreateFormSchema),
@@ -109,7 +123,12 @@ export default function UserCreate() {
                   Cancel
                 </Button>
               </Link>
-              <Button type="submit" width="20" colorScheme={'pink'}>
+              <Button
+                type="submit"
+                width="20"
+                colorScheme={'pink'}
+                isLoading={queryCreateUser.isLoading}
+              >
                 Confirm
               </Button>
             </HStack>
