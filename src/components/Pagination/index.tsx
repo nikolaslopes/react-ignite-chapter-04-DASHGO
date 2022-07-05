@@ -1,12 +1,6 @@
 import { Box, HStack, Stack, Text } from '@chakra-ui/react'
 import { PaginationItem } from './PaginationItem'
-
-export interface PaginationProps {
-  totalCountOfRegisters: number
-  registerPerPage?: number
-  currentPage?: number
-  onPageChange: (page: number) => void
-}
+import { PaginationProps } from './types'
 
 const siblingsCount = 1
 
