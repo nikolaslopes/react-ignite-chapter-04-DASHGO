@@ -28,6 +28,8 @@ export default function UserList() {
 
   const [page, setPage] = useState(1)
 
+  console.log(page)
+
   const isWideVersion = useBreakpointValue({
     base: false,
     md: true,
@@ -141,8 +143,8 @@ export default function UserList() {
 
               <Pagination
                 totalCountOfRegisters={200}
-                currentPage={2}
-                onPageChange={setPage}
+                currentPage={page}
+                onPageChange={(pageNumber) => setPage(pageNumber)}
               />
             </>
           )}
