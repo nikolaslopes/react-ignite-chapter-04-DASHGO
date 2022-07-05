@@ -1,5 +1,5 @@
 export interface PaginationProps {
-  totalCountOfRegisters: number
+  totalCountOfRegisters?: number
   registerPerPage?: number
   currentPage?: number
   onPageChange: (pageNumber: number) => void

@@ -24,11 +24,8 @@ import { Sidebar } from '../../components/Sidebar'
 import { useUsers } from '../../services/users/useUsers'
 
 export default function UserList() {
-  const { data, isLoading, isFetching, error } = useUsers()
-
   const [page, setPage] = useState(1)
-
-  console.log(page)
+  const { data, isLoading, isFetching, error } = useUsers(page)
 
   const isWideVersion = useBreakpointValue({
     base: false,
@@ -103,7 +100,7 @@ export default function UserList() {
                 </Thead>
 
                 <Tbody>
-                  {data?.map((user) => {
+                  {data?.users.map((user) => {
                     return (
                       <Tr key={user.id}>
                         <Td width={['4', '4', '6']}>
@@ -142,7 +139,7 @@ export default function UserList() {
               </Table>
 
               <Pagination
-                totalCountOfRegisters={200}
+                totalCountOfRegisters={data?.totalCount}
                 currentPage={page}
                 onPageChange={(pageNumber) => setPage(pageNumber)}
               />
