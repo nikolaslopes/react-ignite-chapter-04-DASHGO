@@ -41,7 +41,7 @@ export function Pagination({
       alignItems={'center'}
     >
       <Box>
-        <strong>{}</strong> - <strong>10</strong> de{' '}
+        <strong>{registerPerPage}</strong> - <strong>10</strong> de{' '}
         <strong>{totalCountOfRegisters}</strong>
       </Box>
       <HStack>

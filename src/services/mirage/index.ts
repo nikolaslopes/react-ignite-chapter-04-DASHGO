@@ -1,9 +1,19 @@
-import { createServer, Factory, Model, Response } from 'miragejs'
+import {
+  createServer,
+  Factory,
+  Model,
+  Response,
+  ActiveModelSerializer,
+} from 'miragejs'
 import { faker } from '@faker-js/faker'
 import { IUser } from '../../interfaces/IUsers'
 
 export function makeServer() {
   const server = createServer({
+    serializers: {
+      application: ActiveModelSerializer,
+    },
+
     models: {
       user: Model.extend<Partial<IUser>>({}),
     },
@@ -11,7 +21,7 @@ export function makeServer() {
     factories: {
       user: Factory.extend({
         name(index: number) {
-          return `Deep Fake ${index + 1}`
+          return `User ${index + 1}`
         },
         email() {
           return faker.internet.email().toLocaleLowerCase()
