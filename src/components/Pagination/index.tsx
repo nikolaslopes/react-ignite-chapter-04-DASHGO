@@ -68,7 +68,7 @@ export function Pagination({
               <PaginationItem
                 key={page}
                 pageNumber={page}
-                onPageChange={onPageChange}
+                onPageChange={(pageNumber) => onPageChange(pageNumber)}
               />
             )
           })}
