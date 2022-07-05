@@ -15,16 +15,17 @@ import {
   Tr,
   useBreakpointValue,
 } from '@chakra-ui/react'
+import { GetServerSideProps } from 'next'
 import Link from 'next/link'
 import { useState } from 'react'
 import { RiAddLine, RiPencilLine } from 'react-icons/ri'
 import { Header } from '../../components/Header'
 import { Pagination } from '../../components/Pagination'
 import { Sidebar } from '../../components/Sidebar'
-import { IUser } from '../../interfaces/IUsers'
-import { useUsers } from '../../services/users/useUsers'
+import { IUser, IUsers } from '../../interfaces/IUsers'
+import { fetchUsers, useUsers } from '../../services/users/useUsers'
 
-export default function UserList() {
+export default function UserList({ users }: IUsers) {
   const [page, setPage] = useState(1)
   const { data, isLoading, isFetching, error } = useUsers(page)
 

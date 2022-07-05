@@ -1,9 +1,15 @@
-import { useQuery } from 'react-query'
+import { useQuery, UseQueryOptions, UseQueryResult } from 'react-query'
 import { formatDate } from '../../helpers/formatDate'
 import { IUsers } from '../../interfaces/IUsers'
 import { Api } from '../../services/Api'
 
-export const fetchUsers = async (page: number) => {
+interface FetchUsersResponseProps extends IUsers {
+  totalCount: number
+}
+
+export const fetchUsers = async (
+  page: number
+): Promise<FetchUsersResponseProps> => {
   const { data, headers } = await Api.get<IUsers>('/users', {
     params: {
       page: page,
