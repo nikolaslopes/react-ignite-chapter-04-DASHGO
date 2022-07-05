@@ -6,13 +6,13 @@ import { Api } from '../../services/Api'
 export const fetchUsers = async (page: number) => {
   const { data, headers } = await Api.get<IUsers>('users', {
     params: {
-      page,
+      page: page,
     },
   })
 
   const totalCount = Number(headers['x-total-count'])
 
-  const users = data?.users?.map((user) => {
+  const users = data?.users.map((user) => {
     return {
       id: user.id,
       name: user.name,

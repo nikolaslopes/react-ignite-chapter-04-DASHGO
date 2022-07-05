@@ -8,14 +8,20 @@ import {
 import { faker } from '@faker-js/faker'
 import { IUser } from '../../interfaces/IUsers'
 
+type User = {
+  name: string
+  email: string
+  created_at: string
+}
+
 export function makeServer() {
   const server = createServer({
-    serializers: {
-      application: ActiveModelSerializer,
-    },
+    // serializers: {
+    //   application: ActiveModelSerializer,
+    // },
 
     models: {
-      user: Model.extend<Partial<IUser>>({}),
+      user: Model.extend<Partial<User>>({}),
     },
 
     factories: {
@@ -33,11 +39,11 @@ export function makeServer() {
     },
 
     seeds(server) {
-      server.createList('user', 200)
+      server.createList('user', 40)
     },
 
     routes() {
-      this.namespace = 'api' // * Sets the namespace to use the routes
+      this.namespace = 'api'
       this.timing = 750
 
       this.get('/users', function (schema, request) {
@@ -55,10 +61,12 @@ export function makeServer() {
 
         return new Response(200, { 'x-total-count': String(total) }, { users })
       })
+
+      this.get('/users/:id')
       this.post('/users')
 
-      this.namespace = '' // * Reset namespace to don't cause trouble with Next API routes
-      this.passthrough() // * All API calls to '/api' address will be passed through Mirage, but if the call would not a mirage route, it will be passed on from your original route
+      this.namespace = ''
+      this.passthrough()
     },
   })
 

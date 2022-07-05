@@ -16,8 +16,21 @@ import { Header } from '../../components/Header'
 import { Sidebar } from '../../components/Sidebar'
 import { UserCreateFormSchema } from '../../components/Form/Input/schema'
 import { UserCreateFormData } from '../../interfaces/IUsers'
+import { useMutation } from 'react-query'
+import { Api } from '../../services/Api'
 
 export default function UserCreate() {
+  const queryCreateUser = useMutation(async (user: UserCreateFormData) => {
+    const response = await Api.post('users', {
+      user: {
+        ...user,
+        created_at: new Date(),
+      },
+    })
+
+    return response.data.user
+  })
+
   const {
     register,
     handleSubmit,
@@ -27,7 +40,7 @@ export default function UserCreate() {
   })
 
   const handleCreateUser: SubmitHandler<UserCreateFormData> = async (data) => {
-    console.log(data)
+    await queryCreateUser.mutateAsync(data)
   }
 
   return (
