@@ -15,7 +15,7 @@ import { Input } from '../../components/Form/Input'
 import { Header } from '../../components/Header'
 import { Sidebar } from '../../components/Sidebar'
 import { UserCreateFormSchema } from '../../components/Form/Input/schema'
-import { UserCreateFormData } from '../../services/users/types'
+import { UserCreateFormData } from '../../interfaces/IUsers'
 
 export default function UserCreate() {
   const {
