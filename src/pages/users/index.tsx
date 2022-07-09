@@ -117,7 +117,7 @@ export default function UserList({ users }: IUsers) {
                           </Box>
                         </Td>
                         {isWideVersion && <Td>{user.created_at}</Td>}
-                        {/* <Td>
+                        <Td>
                           <Button
                             as={'a'}
                             size={isWideVersion ? 'sm' : 'xs'}
@@ -133,7 +133,7 @@ export default function UserList({ users }: IUsers) {
                           >
                             {isWideVersion && 'Edit'}
                           </Button>
-                        </Td> */}
+                        </Td>
                       </Tr>
                     )
                   })}
